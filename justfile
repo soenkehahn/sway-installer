@@ -18,7 +18,17 @@ self-test *args:
   podman run -it --rm -v $(pwd)/justfile:/justfile sway-docker just {{ args }}
 
 fetch repo tag:
-  git clone --branch {{ tag }} --depth=1 {{ repo }}
+  #!/usr/bin/env bash
+  set -eux
+
+  dir=$(basename {{ repo }})
+  mkdir $dir
+  cd $dir
+  git init
+  git remote add origin {{ repo }}
+  git fetch --depth 1 origin {{ tag }}
+  git checkout FETCH_HEAD
+  ls -la
 
 meson repo tag:
   #!/usr/bin/env bash
@@ -32,3 +42,4 @@ meson repo tag:
   meson build
   ninja -C build
   sudo ninja -C build install
+  echo done
