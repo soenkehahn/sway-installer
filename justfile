@@ -1,18 +1,28 @@
-all: seatd-install
+all: wlroots
+  echo done
 
-seatd-install:
-  #!/usr/bin/env bash
-  set -eux
-  just fetch https://git.sr.ht/~kennylevinsen/seatd 0.6.3
-  cd seatd
-  meson build
-  ninja -C build
-  sudo ninja -C build install
+wlroots: seatd
+  just meson https://gitlab.freedesktop.org/wlroots/wlroots 0.14.1
+
+seatd:
+  just meson https://git.sr.ht/~kennylevinsen/seatd 0.6.3
 
 self-test:
   podman build -t sway-docker .
   podman run -it --rm -v $(pwd)/justfile:/justfile sway-docker just
 
 fetch repo tag:
-  git clone {{ repo }}
-  cd $(basename {{ repo }}) && git checkout {{ tag }}
+  git clone --branch {{ tag }} --depth=1 {{ repo }}
+
+meson repo tag:
+  #!/usr/bin/env bash
+  set -eux
+
+  dir=$(basename {{ repo }})
+  echo $dir
+  rm $dir -rf
+  just fetch {{ repo }} {{ tag }}
+  cd $dir
+  meson build
+  ninja -C build
+  sudo ninja -C build install
