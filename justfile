@@ -1,8 +1,10 @@
 all: sway xdg-desktop-portal-wlr
-  echo done
 
-xdg-desktop-portal-wlr:
+xdg-desktop-portal-wlr: pipewire
   just fetch-and-meson https://github.com/emersion/xdg-desktop-portal-wlr v0.5.0
+
+pipewire:
+  just fetch-and-meson https://gitlab.freedesktop.org/pipewire/pipewire 0.3.43
 
 sway: wlroots
   just fetch https://github.com/swaywm/sway 1.6.1
@@ -31,7 +33,6 @@ fetch repo tag:
   git remote add origin {{ repo }}
   git fetch --depth 1 origin {{ tag }}
   git checkout FETCH_HEAD
-  ls -la
 
 meson repo tag:
   #!/usr/bin/env bash
