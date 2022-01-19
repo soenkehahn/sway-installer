@@ -15,11 +15,14 @@ RUN apt-get update && apt-get install --yes \
   libgbm-dev \
   libgdk-pixbuf-2.0-dev \
   libgles-dev \
+  libinih-dev \
   libinput-dev \
   libjson-c-dev \
   libpango1.0-dev \
+  libpipewire-0.3-dev \
   libpixman-1-dev \
   libpng-dev \
+  libsystemd-dev \
   libsystemd-dev \
   libwayland-dev \
   libxcb-composite0-dev \
@@ -34,7 +37,9 @@ RUN apt-get update && apt-get install --yes \
   libxkbcommon-dev \
   meson \
   pkg-config \
+  scdoc \
   sudo \
+  systemd \
   wayland-protocols \
   xwayland
 RUN curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to /usr/local/bin
