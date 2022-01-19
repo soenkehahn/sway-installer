@@ -35,11 +35,12 @@ RUN apt-get update && apt-get install --yes \
   libxcb-shm0-dev \
   libxcb-xinput-dev \
   libxkbcommon-dev \
-  meson \
   pkg-config \
+  python3-pip \
   scdoc \
   sudo \
   systemd \
   wayland-protocols \
   xwayland
 RUN curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to /usr/local/bin
+RUN pip3 install meson ninja
