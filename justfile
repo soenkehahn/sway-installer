@@ -1,5 +1,8 @@
-all: wlroots
+all: sway
   echo done
+
+sway: wlroots
+  just meson https://github.com/swaywm/sway 1.6.1
 
 wlroots: seatd
   just meson https://gitlab.freedesktop.org/wlroots/wlroots 0.14.1

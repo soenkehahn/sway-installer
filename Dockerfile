@@ -2,17 +2,22 @@ FROM ubuntu:21.10
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install --yes \
+  bash-completion \
   build-essential \
   curl \
   git \
   libavcodec-dev \
   libavformat-dev \
   libavutil-dev \
+  libcairo2-dev \
   libdrm-dev \
   libegl-dev \
   libgbm-dev \
+  libgdk-pixbuf-2.0-dev \
   libgles-dev \
   libinput-dev \
+  libjson-c-dev \
+  libpango1.0-dev \
   libpixman-1-dev \
   libpng-dev \
   libsystemd-dev \
