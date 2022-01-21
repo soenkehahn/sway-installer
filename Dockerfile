@@ -44,3 +44,7 @@ RUN apt-get update && apt-get install --yes \
   xwayland
 RUN curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to /usr/local/bin
 RUN pip3 install meson ninja
+RUN curl https://sh.rustup.rs -sSf > rustup-installer.sh
+RUN sh ./rustup-installer.sh -y
+ENV PATH="/root/.cargo/bin:${PATH}"
+RUN cargo install sd
