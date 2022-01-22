@@ -1,4 +1,15 @@
-all: sway xdg-desktop-portal-wlr
+all: sway xdg-desktop-portal-wlr xdg-desktop-portal
+
+xdg-desktop-portal:
+  #!/usr/bin/env bash
+  set -eux
+
+  just fetch https://github.com/flatpak/xdg-desktop-portal 1.8.1
+  cd xdg-desktop-portal
+  ./autogen.sh
+  ./configure
+  make -j5
+  sudo make install
 
 xdg-desktop-portal-wlr: pipewire
   just fetch-and-meson https://github.com/emersion/xdg-desktop-portal-wlr v0.5.0

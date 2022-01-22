@@ -9,6 +9,9 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 RUN cargo install sd
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install --yes \
+  autoconf \
+  automake \
+  autopoint \
   bash-completion \
   git \
   libavahi-client-dev \
@@ -21,8 +24,10 @@ RUN apt-get update && apt-get install --yes \
   libdbus-1-dev \
   libdrm-dev \
   libegl-dev \
+  libfuse-dev \
   libgbm-dev \
   libgdk-pixbuf-2.0-dev \
+  libgeoclue-2-dev \
   libgles-dev \
   libgstreamer1.0-dev \
   libgstreamer-plugins-base1.0-dev \
@@ -30,17 +35,20 @@ RUN apt-get update && apt-get install --yes \
   libinput-dev \
   libjack-jackd2-dev \
   libjson-c-dev \
+  libjson-glib-dev \
   liblilv-dev \
   libpango1.0-dev \
   libpipewire-0.3-dev \
   libpixman-1-dev \
   libpng-dev \
+  libportal-dev \
   libreadline-dev \
   libsdl2-dev \
   libsndfile-dev \
   libssl-dev \
   libsystemd-dev \
   libsystemd-dev \
+  libtool \
   libusb-1.0-0-dev \
   libwayland-dev \
   libwebrtc-audio-processing-dev \
@@ -54,11 +62,13 @@ RUN apt-get update && apt-get install --yes \
   libxcb-shm0-dev \
   libxcb-xinput-dev \
   libxkbcommon-dev \
+  m4 \
   pkg-config \
   python3-pip \
   scdoc \
   sudo \
   systemd \
+  tree \
   wayland-protocols \
   xwayland
 RUN curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to /usr/local/bin
