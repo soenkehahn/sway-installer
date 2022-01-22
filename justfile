@@ -4,7 +4,7 @@ xdg-desktop-portal:
   #!/usr/bin/env bash
   set -eux
 
-  just fetch https://github.com/flatpak/xdg-desktop-portal 1.8.1
+  just fetch https://github.com/flatpak/xdg-desktop-portal 1.12.1
   cd xdg-desktop-portal
   ./autogen.sh
   ./configure
