@@ -12,7 +12,7 @@ xdg-desktop-portal:
   sudo make install
 
 xdg-desktop-portal-wlr: pipewire
-  just fetch-and-meson https://github.com/emersion/xdg-desktop-portal-wlr v0.5.0
+  just fetch-and-meson https://github.com/emersion/xdg-desktop-portal-wlr 55d73ab64744a8af42821708270ad435fe2356f5
 
 pipewire:
   just fetch-and-meson https://gitlab.freedesktop.org/pipewire/pipewire 0.3.43
