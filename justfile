@@ -20,7 +20,7 @@ pipewire:
 sway: wlroots
   just fetch https://github.com/swaywm/sway 1.6.1
   (cd sway && sd 'Exec=sway' "Exec=bash -l -c 'exec sway'" sway.desktop)
-  just meson https://github.com/swaywm/sway 1.6.1
+  just meson sway
 
 wlroots: seatd
   just fetch-and-meson https://gitlab.freedesktop.org/wlroots/wlroots 0.14.1
@@ -28,11 +28,11 @@ wlroots: seatd
 seatd:
   just fetch-and-meson https://git.sr.ht/~kennylevinsen/seatd 0.6.3
 
-fetch-and-meson repo tag:
-  just fetch {{ repo }} {{ tag }}
-  just meson {{ repo }} {{ tag }}
+fetch-and-meson repo ref:
+  just fetch {{ repo }} {{ ref }}
+  just meson $(basename {{ repo }})
 
-fetch repo tag:
+fetch repo ref:
   #!/usr/bin/env bash
   set -eux
 
@@ -42,14 +42,14 @@ fetch repo tag:
   cd $dir
   git init
   git remote add origin {{ repo }}
-  git fetch --depth 1 origin {{ tag }}
+  git fetch --depth 1 origin {{ ref }}
   git checkout FETCH_HEAD
 
-meson repo tag:
+meson dir:
   #!/usr/bin/env bash
   set -eux
 
-  cd $(basename {{ repo }})
+  cd {{ dir }}
   meson build
   ninja -C build
   sudo ninja -C build install
