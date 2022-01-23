@@ -13,7 +13,9 @@ RUN apt-get update && apt-get install --yes \
   automake \
   autopoint \
   bash-completion \
+  doxygen \
   git \
+  graphviz \
   libavahi-client-dev \
   libavcodec-dev \
   libavformat-dev \
@@ -22,7 +24,6 @@ RUN apt-get update && apt-get install --yes \
   libcairo2-dev \
   libcap-dev \
   libdbus-1-dev \
-  libdrm-dev \
   libegl-dev \
   libfuse-dev \
   libgbm-dev \
@@ -38,7 +39,7 @@ RUN apt-get update && apt-get install --yes \
   libjson-glib-dev \
   liblilv-dev \
   libpango1.0-dev \
-  libpipewire-0.3-dev \
+  libpciaccess-dev \
   libpixman-1-dev \
   libpng-dev \
   libportal-dev \
@@ -50,7 +51,6 @@ RUN apt-get update && apt-get install --yes \
   libsystemd-dev \
   libtool \
   libusb-1.0-0-dev \
-  libwayland-dev \
   libwebrtc-audio-processing-dev \
   libxcb-composite0-dev \
   libxcb-dri3-dev \
@@ -62,6 +62,7 @@ RUN apt-get update && apt-get install --yes \
   libxcb-shm0-dev \
   libxcb-xinput-dev \
   libxkbcommon-dev \
+  libxml2-dev \
   m4 \
   pkg-config \
   python3-pip \
@@ -69,7 +70,8 @@ RUN apt-get update && apt-get install --yes \
   sudo \
   systemd \
   tree \
-  wayland-protocols \
+  xmlto \
+  xsltproc \
   xwayland
 RUN curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to /usr/local/bin
 RUN pip3 install meson ninja

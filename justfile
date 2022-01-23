@@ -17,13 +17,22 @@ xdg-desktop-portal-wlr: pipewire
 pipewire:
   just fetch-and-meson https://gitlab.freedesktop.org/pipewire/pipewire 0.3.43
 
-sway: wlroots
-  just fetch https://github.com/swaywm/sway 1.6.1
+sway: wayland-server wayland-protocols wlroots
+  just fetch https://github.com/swaywm/sway 1.7
   (cd sway && sd 'Exec=sway' "Exec=bash -l -c 'exec sway'" sway.desktop)
   just meson sway
 
-wlroots: seatd
-  just fetch-and-meson https://gitlab.freedesktop.org/wlroots/wlroots 0.14.1
+wayland-server:
+  just fetch-and-meson https://gitlab.freedesktop.org/wayland/wayland 1.20.0
+
+wayland-protocols:
+  just fetch-and-meson https://gitlab.freedesktop.org/wayland/wayland-protocols 1.24
+
+wlroots: seatd libdrm wayland-server wayland-protocols
+  just fetch-and-meson https://gitlab.freedesktop.org/wlroots/wlroots 0.15.0
+
+libdrm:
+  just fetch-and-meson https://gitlab.freedesktop.org/mesa/drm libdrm-2.4.109
 
 seatd:
   just fetch-and-meson https://git.sr.ht/~kennylevinsen/seatd 0.6.3
