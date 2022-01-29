@@ -1,6 +1,6 @@
 all: sway xdg-desktop-portal-wlr xdg-desktop-portal
 
-xdg-desktop-portal:
+xdg-desktop-portal: libportal pipewire
   #!/usr/bin/env bash
   set -eux
 
@@ -10,6 +10,9 @@ xdg-desktop-portal:
   ./configure
   make -j5
   sudo make install
+
+libportal:
+  just fetch-and-meson https://github.com/flatpak/libportal 0.5
 
 xdg-desktop-portal-wlr: pipewire
   just fetch-and-meson https://github.com/emersion/xdg-desktop-portal-wlr 55d73ab64744a8af42821708270ad435fe2356f5

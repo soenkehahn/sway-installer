@@ -29,9 +29,12 @@ RUN apt-get update && apt-get install --yes \
   libgbm-dev \
   libgdk-pixbuf-2.0-dev \
   libgeoclue-2-dev \
+  libgirepository1.0-dev \
   libgles-dev \
   libgstreamer1.0-dev \
   libgstreamer-plugins-base1.0-dev \
+  libgtk-3-dev \
+  libgtk-4-dev \
   libinih-dev \
   libinput-dev \
   libjack-jackd2-dev \
@@ -42,7 +45,7 @@ RUN apt-get update && apt-get install --yes \
   libpciaccess-dev \
   libpixman-1-dev \
   libpng-dev \
-  libportal-dev \
+  libqt5x11extras5-dev \
   libreadline-dev \
   libsdl2-dev \
   libsndfile-dev \
@@ -65,11 +68,15 @@ RUN apt-get update && apt-get install --yes \
   libxml2-dev \
   m4 \
   pkg-config \
+  python3-jinja2 \
   python3-pip \
+  python3-toml \
+  python3-typogrify \
   scdoc \
   sudo \
   systemd \
   tree \
+  valac \
   xmlto \
   xsltproc \
   xwayland
